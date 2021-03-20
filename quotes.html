@@ -6,11 +6,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="yogasmara">
   <title>QUOTES | Barba js test</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body data-barba="wrapper">
+  <nav>
+    <a href="./index.html">Index</a>
+    <a href="./about.html">About</a>
+    <a href="./quotes.html">Quotes</a>
+  </nav>
+
   <main data-barba="container" data-barba-namespace="quotes">
     <h1>You are on Quotes</h1>
   </main>
 
+    <!-- barba jsdelivr cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script>
+      // barba init
+      barba.init({
+        transitions: [{
+          name: 'default-transition',
+          leave(data) {
+            return gsap.to(data.current.container, {
+              position: 'absolute',
+              translateX: '-100%'
+            });
+          },
+          enter(data) {
+            return gsap.from(data.next.container, {
+              translateX: '100%'
+            });
+          }
+        }]
+      });
+    </script>
 </body>
 </html>

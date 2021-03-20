@@ -32,12 +32,12 @@
         leave(data) {
           return gsap.to(data.current.container, {
             position: 'absolute',
-            opacity: 0
+            translateX: '-100%'
           });
         },
         enter(data) {
           return gsap.from(data.next.container, {
-            opacity: 0
+            translateX: '100%'
           });
         }
       }]
